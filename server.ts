@@ -1,8 +1,13 @@
 import express from "express";
+import cors from "cors";
 
 const app = express();
 
 const PORT = 8000;
+
+//middlewares
+app.use(cors());
+app.use(express.json());
 
 //APIs
 import userRouter from "./src/routers/userRouter";
