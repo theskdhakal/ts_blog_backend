@@ -1,5 +1,5 @@
 import express from "express";
-import { getUserByEmail, insertUser } from "../model/userModel";
+import { getUserByEmail, insertUser } from "../model/user/userModel";
 import { comparePassword, hashPassword } from "../utils/bcrypt";
 
 const router = express.Router();
@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     const result = await insertUser(req.body);
 
     if (result?._id) {
-      res.json({
+      return res.json({
         status: "success",
         message: "new user has been added successfully",
       });
