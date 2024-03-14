@@ -18,10 +18,10 @@ router.post("/", async (req, res) => {
         message: "new user has been added successfully",
       });
     }
-  } catch (error) {
+  } catch (error: any) {
     res.json({
       status: "error",
-      message: "error.message",
+      message: error.message,
     });
   }
 });
@@ -56,10 +56,10 @@ router.post("/login", async (req, res) => {
       status: "error",
       message: "Invalid Credentials",
     });
-  } catch (error) {
+  } catch (error: any) {
     res.json({
       status: "error",
-      message: "error.message",
+      message: error.message,
     });
   }
 });

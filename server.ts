@@ -18,8 +18,10 @@ app.use(express.json());
 
 //APIs
 import userRouter from "./src/routers/userRouter";
+import contentRouter from "./src/routers/contentRouter";
 
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/content", contentRouter);
 
 app.use("/", (req, res) => {
   res.json({
