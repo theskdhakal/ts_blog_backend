@@ -10,3 +10,7 @@ export const insertUser = (
 export const getUserByEmail = (email: string) => {
   return userSchema.findOne({ email });
 };
+
+export const getUserById = (_id: string) => {
+  return userSchema.findOne({ _id });
+};

@@ -16,7 +16,7 @@ const contentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    content: {
+    post: {
       type: String,
       required: true,
     },

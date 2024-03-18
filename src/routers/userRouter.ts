@@ -47,9 +47,11 @@ router.post("/login", async (req, res) => {
     const isMatch = comparePassword(password, user.password);
 
     if (isMatch) {
+      const userwithoutPwd = { ...user.toObject(), password: undefined };
       return res.json({
         status: "success",
         message: "logged in successfully",
+        user: userwithoutPwd,
       });
     }
     res.json({
