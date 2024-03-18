@@ -10,12 +10,13 @@ router.post("/", async (req, res) => {
 
     req.body.password = hashPassword(password);
 
-    const result = await insertUser(req.body);
+    const user = await insertUser(req.body);
 
-    if (result?._id) {
+    if (user?._id) {
       return res.json({
         status: "success",
         message: "new user has been added successfully",
+        user,
       });
     }
   } catch (error: any) {

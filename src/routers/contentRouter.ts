@@ -3,6 +3,7 @@ import {
   addContent,
   deleteContent,
   getAllContent,
+  getContentById,
 } from "../model/content/contentModel";
 import { auth } from "../middleware/AuthMiddleware";
 
@@ -43,9 +44,24 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.delete("/:_id", auth, async (req, res) => {
+router.delete("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
+    const { authorization } = req.headers;
+
+    const userId = authorization;
+
+    console.log(userId);
+
+    const thisContent = await getContentById(_id);
+
+    if (!thisContent) {
+      return res.json({ message: "content not found" });
+    }
+
+    if (thisContent?.authorId.toString() !== userId) {
+      return res.json({ status: "error", message: "unauthorized" });
+    }
 
     const deletedContent = await deleteContent(_id);
 

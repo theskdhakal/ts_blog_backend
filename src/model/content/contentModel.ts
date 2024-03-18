@@ -11,6 +11,10 @@ export const getAllContent = () => {
   return contentSchema.find();
 };
 
+export const getContentById = (_id: string) => {
+  return contentSchema.findById({ _id }).lean();
+};
+
 export const deleteContent = (_id: string) => {
   return contentSchema.findByIdAndDelete(_id);
 };
